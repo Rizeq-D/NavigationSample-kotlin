@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.sp
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
-fun Screen2(navigationToFirstScreen : () -> Unit) {
-    val name = remember { mutableStateOf("") }
+fun ScreenNu2(navigationToThirdScreen : () -> Unit) {
+    val level = remember { mutableStateOf("") }
 
     Column (
         modifier = Modifier
@@ -36,13 +36,13 @@ fun Screen2(navigationToFirstScreen : () -> Unit) {
         Text("Now we are in the second level, STAY SHOCKED!!!",
             fontSize = 14.sp, color = Color.Unspecified)
         Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(value = name.value, onValueChange = {
-            name.value = it
+        OutlinedTextField(value = level.value, onValueChange = {
+            level.value = it
         })
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            navigationToFirstScreen()
+            navigationToThirdScreen()
         }) {
             Text("MOVE ON!")
         }
@@ -51,8 +51,8 @@ fun Screen2(navigationToFirstScreen : () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreviews() {
+fun ScreeningNu2Previews() {
     NavigationSampleTheme {
-        Screen2({})
+        ScreenNu2({})
     }
 }

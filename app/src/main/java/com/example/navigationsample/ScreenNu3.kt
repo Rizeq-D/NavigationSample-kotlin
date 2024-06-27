@@ -21,10 +21,11 @@ import androidx.compose.ui.unit.dp
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
-fun ScreenNu1(navigationToSecondScreen : () -> Unit) {
-    val level = remember { mutableStateOf("") }
+fun ScreenNu3(navigateToFirstScreen : () -> Unit) {
 
-    Column (
+    val level = remember { mutableStateOf("") }
+    
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(8.dp),
@@ -32,26 +33,51 @@ fun ScreenNu1(navigationToSecondScreen : () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally)
     {
 
-        Text("This is the first step in our Navigation journey!",
-            fontWeight = FontWeight.W900, color = Color.Unspecified)
+        Text("Wow, you have the guts to come to this level",
+            fontWeight = FontWeight.W900, color = Color.Black)
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(value = level.value, onValueChange = {
             level.value = it
         })
 
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {
-            navigationToSecondScreen()
-        }) {
-            Text("Go to the next step")
+        Button(
+            onClick = navigateToFirstScreen) {
+            Text("You have seen enough, you need to go back to the first level, NOW!!!")
         }
     }
+    
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ScreeningNu1Preview() {
+fun ScreeningNu3Preview() {
     NavigationSampleTheme {
-        ScreenNu1({})
+        ScreenNu3({})
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -32,17 +32,25 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TheApp() {
+
     val navController = rememberNavController()
+
     NavHost(navController = navController, startDestination = "screenNu1") {
         composable("screenNu1"){
-            Screen1 {
+            ScreenNu1 {
                 navController.navigate("screenNu2")
             }
         }
-        composable(route = "ScreenNu2"){
-            Screen2 {
-                navController.navigate("ScreenNu1")   
+
+        composable("screenNu2"){
+            ScreenNu2 {
+                navController.navigate("screenNu3")
             }
+        }
+
+        composable(route = "screenNu3") {
+            ScreenNu3 {
+                navController.navigate("screenNu1")}
         }
     }
 }
