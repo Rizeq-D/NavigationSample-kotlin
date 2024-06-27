@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -22,8 +21,6 @@ import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
 fun ScreenNu3(navigateToFirstScreen : () -> Unit) {
-
-    val level = remember { mutableStateOf("") }
     
     Column(
         modifier = Modifier
@@ -36,9 +33,6 @@ fun ScreenNu3(navigateToFirstScreen : () -> Unit) {
         Text("Wow, you have the guts to come to this level",
             fontWeight = FontWeight.W900, color = Color.Black)
         Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(value = level.value, onValueChange = {
-            level.value = it
-        })
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(

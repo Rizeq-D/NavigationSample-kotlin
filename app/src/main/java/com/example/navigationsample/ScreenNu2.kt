@@ -7,11 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,8 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
-fun ScreenNu2(navigationToThirdScreen : () -> Unit) {
-    val level = remember { mutableStateOf("") }
+fun ScreenNu2(name : String, navigationToThirdScreen : (String) -> Unit) {
 
     Column (
         modifier = Modifier
@@ -33,16 +29,15 @@ fun ScreenNu2(navigationToThirdScreen : () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally)
     {
 
+        Text("Hellcome $name",
+            fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color.Black)
         Text("Now we are in the second level, STAY SHOCKED!!!",
-            fontSize = 14.sp, color = Color.Unspecified)
+            fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color.Black)
         Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(value = level.value, onValueChange = {
-            level.value = it
-        })
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            navigationToThirdScreen()
+            navigationToThirdScreen(name)
         }) {
             Text("MOVE ON!")
         }
@@ -53,6 +48,6 @@ fun ScreenNu2(navigationToThirdScreen : () -> Unit) {
 @Composable
 fun ScreeningNu2Previews() {
     NavigationSampleTheme {
-        ScreenNu2({})
+        ScreenNu2("", {})
     }
 }

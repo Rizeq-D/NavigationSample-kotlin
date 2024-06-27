@@ -8,7 +8,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -37,13 +36,14 @@ fun TheApp() {
 
     NavHost(navController = navController, startDestination = "screenNu1") {
         composable("screenNu1"){
-            ScreenNu1 {
-                navController.navigate("screenNu2")
+            ScreenNu1 {name ->
+                navController.navigate("screenNu2/$name")
             }
         }
 
-        composable("screenNu2"){
-            ScreenNu2 {
+        composable("screenNu2/{name}"){
+            val name = it.arguments?.getString("name") ?: "no name"
+            ScreenNu2(name) {
                 navController.navigate("screenNu3")
             }
         }
