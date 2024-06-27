@@ -9,6 +9,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,9 +23,25 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background)
                 {
-                    Screen1()
-                    Screen2()
+                    TheApp()
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun TheApp() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "screenNu1") {
+        composable("screenNu1"){
+            Screen1 {
+                navController.navigate("screenNu2")
+            }
+        }
+        composable(route = "ScreenNu2"){
+            Screen2 {
+                navController.navigate("ScreenNu1")   
             }
         }
     }

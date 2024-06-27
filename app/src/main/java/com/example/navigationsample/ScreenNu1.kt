@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
-fun Screen1() {
+fun Screen1(navigationToSecondScreen : () -> Unit) {
     val name = remember { mutableStateOf("") }
 
     Column (
@@ -41,7 +41,7 @@ fun Screen1() {
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-
+            navigationToSecondScreen()
         }) {
             Text("Go to the next step")
         }
@@ -52,6 +52,6 @@ fun Screen1() {
 @Composable
 fun GreetingPreview() {
     NavigationSampleTheme {
-        Screen1()
+        Screen1({})
     }
 }

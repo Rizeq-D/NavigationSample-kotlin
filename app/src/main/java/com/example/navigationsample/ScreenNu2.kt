@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
-fun Screen2() {
+fun Screen2(navigationToFirstScreen : () -> Unit) {
     val name = remember { mutableStateOf("") }
 
     Column (
@@ -42,7 +42,7 @@ fun Screen2() {
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-
+            navigationToFirstScreen()
         }) {
             Text("MOVE ON!")
         }
@@ -53,6 +53,6 @@ fun Screen2() {
 @Composable
 fun GreetingPreviews() {
     NavigationSampleTheme {
-        Screen2()
+        Screen2({})
     }
 }
