@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
-fun ScreenNu2(name : String, navigationToThirdScreen : (String) -> Unit) {
+fun ScreenNu2(name: String, age: Int, navigationToThirdScreen: () -> Unit) {
 
     Column (
         modifier = Modifier
@@ -29,7 +29,7 @@ fun ScreenNu2(name : String, navigationToThirdScreen : (String) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally)
     {
 
-        Text("Hellcome $name",
+        Text("Hellcome $name so you are $age",
             fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color.Black)
         Text("Now we are in the second level, STAY SHOCKED!!!",
             fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color.Black)
@@ -37,7 +37,7 @@ fun ScreenNu2(name : String, navigationToThirdScreen : (String) -> Unit) {
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            navigationToThirdScreen(name)
+            navigationToThirdScreen()
         }) {
             Text("MOVE ON!")
         }
@@ -48,6 +48,6 @@ fun ScreenNu2(name : String, navigationToThirdScreen : (String) -> Unit) {
 @Composable
 fun ScreeningNu2Previews() {
     NavigationSampleTheme {
-        ScreenNu2("", {})
+        //ScreenNu2("", 0, {})
     }
 }

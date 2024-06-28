@@ -8,9 +8,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.navigationsample.ui.theme.NavigationSampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,14 +38,18 @@ fun TheApp() {
 
     NavHost(navController = navController, startDestination = "screenNu1") {
         composable("screenNu1"){
-            ScreenNu1 {name ->
-                navController.navigate("screenNu2/$name")
+            ScreenNu1 {name, age ->
+                navController.navigate("screenNu2/$name/$age")
             }
         }
 
-        composable("screenNu2/{name}"){
-            val name = it.arguments?.getString("name") ?: "no name"
-            ScreenNu2(name) {
+        composable(
+            route = "screenNu2/{name}/{age}",
+            arguments = listOf(navArgument("name") { type = NavType.StringType }, navArgument("age") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val name = backStackEntry.arguments?.getString("name") ?: "no name"
+            val age = backStackEntry.arguments?.getInt("age") ?: 0
+            ScreenNu2(name, age) {
                 navController.navigate("screenNu3")
             }
         }
